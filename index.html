@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aura Watches - Premium luxury watches store offering timeless elegance and precision. Shop men's, women's, smart, and luxury Aura collections.">
+    <meta name="keywords" content="luxury watches, premium timepieces, Aura watches, men's watches, women's watches, smart watches">
+    <title>Aura Watches - Premium Timepieces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Embedded CSS for simplicity - in a real project, link to external styles.css */
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background: #000; color: #FFF; line-height: 1.6; }
+        header { background: #000; padding: 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: #FFF; text-decoration: none; transition: color 0.3s; }
+        nav a:hover { color: #D4AF37; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2em; color: #D4AF37; }
+        .icons { display: flex; gap: 15px; }
+        .icons i { cursor: pointer; transition: color 0.3s; }
+        .icons i:hover { color: #D4AF37; }
+        .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover; } /* Aura-inspired luxury watch hero */
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .hero-content { z-index: 1; text-align: center; max-width: 600px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3em; margin-bottom: 20px; }
+        .btn-primary { background: #D4AF37; color: #000; padding: 15px 30px; border: none; font-weight: 600; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 15px #D4AF37; }
+        .btn-secondary { background: transparent; color: #D4AF37; border: 2px solid #D4AF37; padding: 10px 20px; cursor: pointer; transition: background 0.3s; }
+        .btn-secondary:hover { background: #D4AF37; color: #000; }
+        section { padding: 50px 20px; text-align: center; }
+        .collections .collection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .collection-card { background: #FFF; color: #000; padding: 20px; border-radius: 10px; transition: box-shadow 0.3s; }
+        .collection-card:hover { box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5); }
+        .collection-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; }
+        .trending { position: relative; }
+        .carousel { display: flex; overflow: hidden; width: 100%; height: 300px; }
+        .carousel-item { min-width: 100%; transition: transform 0.5s; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #FFF; border: none; padding: 10px; cursor: pointer; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .offers { background: #D4AF37; color: #000; }
+        .newsletter { background: #111; }
+        .newsletter form { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .newsletter input { padding: 10px; width: 300px; border: none; }
+        .newsletter button { padding: 10px 20px; background: #D4AF37; color: #000; border: none; cursor: pointer; }
+        footer { background: #000; padding: 20px; text-align: center; }
+        .footer-content { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .social i { margin: 0 10px; cursor: pointer; transition: color 0.3s; }
+        .social i:hover { color: #D4AF37; }
+        .links a { margin: 0 10px; color: #FFF; text-decoration: none; }
+        .links a:hover { color: #D4AF37; }
+        /* Product Page Styles */
+        .product-detail { display: flex; gap: 50px; margin: 50px auto; max-width: 1200px; }
+        .product-images { flex: 1; }
+        .product-images img { width: 100%; cursor: zoom-in; transition: transform 0.3s; }
+        .product-images img:hover { transform: scale(1.1); }
+        .product-info { flex: 1; text-align: left; }
+        .product-info h1 { font-family: 'Playfair Display', serif; }
+        .price { font-size: 1.5em; color: #D4AF37; }
+        .specs { list-style: none; padding: 0; }
+        .reviews { margin-top: 50px; }
+        .review { background: #111; padding: 20px; margin: 10px 0; border-radius: 5px; }
+        /* Dashboard Styles */
+        .dashboard { display: flex; margin: 50px auto; max-width: 1200px; }
+        aside { width: 200px; background: #111; padding: 20px; }
+        aside ul { list-style: none; padding: 0; }
+        aside a { color: #FFF; text-decoration: none; display: block; padding: 10px; }
+        aside a:hover { background: #D4AF37; color: #000; }
+        main { flex: 1; padding: 20px; }
+        /* Contact Styles */
+        .contact { display: flex; gap: 50px; margin: 50px auto; max-width: 1200px; }
+        .contact form { flex: 1; }
+        .contact input, .contact textarea { width: 100%; padding: 10px; margin: 10px 0; border: none; background: #111; color: #FFF; }
+        .contact button { width: 100%; }
+        .info { flex: 1; }
+        .info iframe { width: 100%; height: 300px; border: none; }
+        /* Payment Styles */
+        .checkout { display: flex; gap: 50px; margin: 50px auto; max-width: 1200px; }
+        .payment-options { flex: 1; }
+        .order-summary { flex: 1; background: #111; padding: 20px; }
+        /* Returns Styles */
+        .returns { margin: 50px auto; max-width: 800px; }
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero { height: 50vh; }
+            .hero h1 { font-size: 2em; }
+            .product-detail, .contact, .checkout, .dashboard { flex-direction: column; }
+            .collection-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Aura Watches</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Timeless Elegance Awaits</h1>
+            <p>Discover our latest collection of premium Aura watches crafted for the discerning connoisseur.</p>
+            <button class="btn-primary">Shop Now</button>
+        </div>
+    </section>
+
+    <section id="collections" class="collections">
+        <h2>Featured Collections</h2>
+        <div class="collection-grid">
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aura Men’s Watches" loading="lazy">
+                <h3>Men’s</h3>
+                <a href="#shop" class="btn-secondary">Explore</a>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aura Women’s Watches" loading="lazy">
+                <h3>Women’s</h3>
+                <a href="#shop" class="btn-secondary">Explore</a>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aura Smart Watches" loading="lazy">
+                <h3>Smart</h3>
+                <a href="#shop" class="btn-secondary">Explore</a>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aura Luxury Watches" loading="lazy">
+                <h3>Luxury</h3>
+                <a href="#shop" class="btn-secondary">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="trending" class="trending">
+        <h2>Trending Aura Watches</h2>
+        <div class="carousel">
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Trending Aura Watch 1" loading="lazy"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Trending Aura Watch 2" loading="lazy"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Trending Aura Watch 3" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn prev">&lt;</button>
+        <button class="carousel-btn next">&gt;</button>
+    </section>
+
+    <section id="offers" class="offers">
+        <h2>Special Offers</h2>
+        <p>Up to 20% off on select Aura luxury watches. Limited time only – elevate your style today!</p>
+        <button class="btn-secondary">View Deals</button>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for exclusive deals and new Aura arrivals.</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Product Page Example (Integrated for Demo) -->
+    <section id="product" class="product-detail">
+        <div class="product-images">
+            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aura Luxury Watch Detail" loading="lazy">
+        </div>
+        <div class="product-info">
+            <h1>Aura Luxury Gold Watch</h1>
+            <p class="price">$2,500</p>
+            <p>Detailed Description: This exquisite Aura timepiece combines precision engineering with unparalleled elegance, featuring a gold-plated case and Swiss movement.</p>
+            <ul class="specs">
+                <li><strong>Case Material:</strong> 18K Gold</li>
+                <li><strong>Movement:</strong> Automatic</li>
+                <li><strong>Water Resistance:</strong> 50m</li>
+                <li><strong>Warranty:</strong> 2 Years</li>
+            </ul>
+            <button class="btn-primary">Add to Cart</button>
+            <button class="btn-secondary">Buy Now</button>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p><strong>★★★★★</strong> - "Absolutely stunning Aura watch! Worth every penny." - John D.</p>
+        </div>
+        <div class="review">
+            <p><strong>★★★★☆</strong> - "Great quality, fast delivery." - Sarah L.</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Example -->
+    <section id="dashboard" class="dashboard">
+        <aside>
+            <ul>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#orders">Order History</a></li>
+                <li><a href="#wishlist">Wishlist</a></li>
+            </ul>
+        </aside>
+        <main>
+            <section id="profile">
+                <h2>Profile Info</h2>
+                <p>Name: John Doe</p>
+                <p>Email: john@example.com</p>
+                <button class="btn-secondary">Update Details</button>
+            </section>
+            <section id="orders">
+                <h2>Order History</h2>
+                <p>Order #12345 - Aura Luxury Watch - Delivered on 2023-10-01</p>
+                <button class="btn-secondary">Track Delivery</button>
+            </section>
+            <section id="wishlist">
+                <h2>Wishlist</h2>
+                <p>Aura Luxury Gold Watch</p>
+            </section>
+        </main>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="contact">
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <div class="info">
+            <p><strong>Address:</strong> 123 Luxury St, Elegance City, EC 12345</p>
+            <p><strong>Email:</strong> support@aurawatches.com</p>
+            <p><strong>Phone:</strong> +1-234-567-8900</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.419415484681!3d37.774929779759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064b5c5c5c5%3A0x4a7b8b8b8b8b8b8b!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1633020000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Payment Page -->
+    <section id="payment" class="checkout">
+        <div class="payment-options">
+            <h2>Select Payment Method</h2>
+            <label><input type="radio" name="payment" value="card" checked> Credit/Debit Card</label><br>
+            <label><input type="radio" name="payment" value="paypal"> Pay
